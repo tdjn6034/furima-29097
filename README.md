@@ -20,7 +20,7 @@
 
 |Column              |Type       |Options                       |
 |--------------------|-----------|------------------------------|
-|item_name           |string     |null: false                   |
+|name           |string     |null: false                   |
 |product_description |text       |null: false                   |
 |category_id         |string     |null: false                   |
 |quality_id          |string     |null: false                   |
