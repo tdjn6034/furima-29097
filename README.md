@@ -39,13 +39,14 @@
 
 |Column|Type       |Options          |
 |------|-----------|-----------------|
-|who   |references |foreign_key: true|
+|user  |references |foreign_key: true|
 |when  |string     |null: false      |
-|what  |references |foreign_key: true|
+|item  |references |foreign_key: true|
 
 ### Association
 - belongs_to :items
 - has_one :addresses
+- belongs_to :users
 
 
 ## addressesテーブル
