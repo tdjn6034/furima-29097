@@ -20,19 +20,19 @@
 
 |Column              |Type       |Options                       |
 |--------------------|-----------|------------------------------|
-|image               |string     |null: false                   |
 |item_name           |string     |null: false                   |
 |product_description |text       |null: false                   |
-|category            |string     |null: false                   |
-|quality             |string     |null: false                   |
-|delivery_fee        |string     |null: false                   |
-|shipment_source     |string     |null: false                   |
-|days_to_ship        |string     |null: false                   |
-|price               |string     |null: false                   |
-|seller              |references |null: false, foreign_key: true|
+|category_id         |string     |null: false                   |
+|quality_id          |string     |null: false                   |
+|delivery_fee_id     |string     |null: false                   |
+|shipment_source_id  |string     |null: false                   |
+|days_to_ship_id     |string     |null: false                   |
+|price               |integer    |null: false                   |
+|user                |references |null: false, foreign_key: true|
 
 ### Association
 - has_one :purchase_records
+- belongs_to :users
 
 
 ## purchase_recordsテーブル
