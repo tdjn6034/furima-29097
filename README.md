@@ -31,7 +31,7 @@
 |user                |references |null: false, foreign_key: true|
 
 ### Association
-- has_one :purchase_records
+- has_one :purchase_record
 - belongs_to :user
 
 
@@ -44,7 +44,7 @@
 
 ### Association
 - belongs_to :item
-- has_one :addresses
+- has_one :address
 - belongs_to :user
 
 
