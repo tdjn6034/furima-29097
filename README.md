@@ -7,8 +7,8 @@
 |encrypted_password |string|null: false              |
 |last_name          |string|null: false              |
 |first_name         |string|null: false              |
-|last_name_kana     |string|null: false              |
-|first_name_kana    |string|null: false              |
+|last_name_reading  |string|null: false              |
+|first_name_reading |string|null: false              |
 |birthday           |date  |null: false              |
 
 ### Association
@@ -20,19 +20,19 @@
 
 |Column              |Type       |Options                       |
 |--------------------|-----------|------------------------------|
-|name           |string     |null: false                   |
+|name                |string     |null: false                   |
 |product_description |text       |null: false                   |
-|category_id         |string     |null: false                   |
-|quality_id          |string     |null: false                   |
-|delivery_fee_id     |string     |null: false                   |
-|shipment_source_id  |string     |null: false                   |
-|days_to_ship_id     |string     |null: false                   |
+|category_id         |integer    |null: false                   |
+|quality_id          |integer    |null: false                   |
+|delivery_fee_id     |integer    |null: false                   |
+|shipment_source_id  |integer    |null: false                   |
+|days_to_ship_id     |integer    |null: false                   |
 |price               |integer    |null: false                   |
 |user                |references |null: false, foreign_key: true|
 
 ### Association
 - has_one :purchase_records
-- belongs_to :users
+- belongs_to :user
 
 
 ## purchase_recordsテーブル
@@ -40,13 +40,12 @@
 |Column|Type       |Options          |
 |------|-----------|-----------------|
 |user  |references |foreign_key: true|
-|when  |string     |null: false      |
 |item  |references |foreign_key: true|
 
 ### Association
-- belongs_to :items
+- belongs_to :item
 - has_one :addresses
-- belongs_to :users
+- belongs_to :user
 
 
 ## addressesテーブル
@@ -54,7 +53,7 @@
 |Column         |Type      |Options          |
 |---------------|----------|-----------------|
 |postal_code    |string    |null: false      |
-|prefecture_id  |string    |null: false      |
+|prefecture_id  |integer   |null: false      |
 |municipality   |string    |null: false      |
 |address        |string    |null: false      |
 |building_name  |string    |-----------------|
@@ -62,4 +61,4 @@
 |purchase_record|references|foreign_key :true|
 
 ### Association
-- belongs_to :purchase_records
+- belongs_to :purchase_record
