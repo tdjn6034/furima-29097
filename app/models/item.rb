@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   belongs_to :delivery_fee
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :prefecture_fee
+  belongs_to :prefecture
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :days_to_ship
@@ -27,14 +27,12 @@ class Item < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equel_to:9999999}
 
 
-  validates :category, numericality: { other_than: 1 }
+  validates :category_id, numericality: { other_than: 1 }
+  validates :quality_id, numericality: { other_than: 1 }
+  validates :delivery_fee_id, numericality: { other_than: 1 }
+  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :days_to_ship_id, numericality: { other_than: 1 }
 
-  validates :quality, numericality: { other_than: 1 }
-
-
-  validates :delivery_fee, numericality: { other_than: 1 }
-
-  validates :prefecture, numericality: { other_than: 1 }
-
-  validates :days_to_ship, numericality: { other_than: 1 }
+  has_one :purchase_record
+  belongs_to :user
 end
