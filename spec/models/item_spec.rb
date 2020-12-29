@@ -60,8 +60,13 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include('Days to ship Select')
         end
-        it 'priceの範囲が￥300〜￥9,999,999の間でないと登録できない' do
-          @item.price = 200
+        it 'priceが￥299以下の場合登録できない' do
+          @item.price = 299
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Price Out of setting range')
+        end
+        it 'priceが￥10,000,000以上の場合登録できない' do
+          @item.price = 10_000_000
           @item.valid?
           expect(@item.errors.full_messages).to include('Price Out of setting range')
         end
@@ -74,6 +79,31 @@ RSpec.describe Item, type: :model do
           @item.user = nil
           @item.valid?
           expect(@item.errors.full_messages).to include('User must exist')
+        end
+        it 'category_idが空では登録できない' do
+          @item.category_id = ''
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Category can't be blank", 'Category Select')
+        end
+        it 'quality_idが空では登録できない' do
+          @item.quality_id = ''
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Quality can't be blank", 'Quality Select')
+        end
+        it 'prefecture_idが空では登録できない' do
+          @item.prefecture_id = ''
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Prefecture can't be blank", 'Prefecture Select')
+        end
+        it 'delivery_fee_idが空では登録できない' do
+          @item.delivery_fee_id = ''
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Delivery fee can't be blank", 'Delivery fee Select')
+        end
+        it 'days_to_ship_idが空では登録できない' do
+          @item.days_to_ship_id = ''
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Days to ship can't be blank", 'Days to ship Select')
         end
       end
     end
