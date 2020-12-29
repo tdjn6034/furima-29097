@@ -14,11 +14,13 @@ class Item < ApplicationRecord
     validates :product_description
     validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
-    validates :category_id, numericality: { other_than: 1, message: 'Select' }
-    validates :quality_id, numericality: { other_than: 1, message: 'Select' }
-    validates :delivery_fee_id, numericality: { other_than: 1, message: 'Select' }
-    validates :prefecture_id, numericality: { other_than: 1, message: 'Select' }
-    validates :days_to_ship_id, numericality: { other_than: 1, message: 'Select' }
+    with_options numericality: { other_than: 1, message: 'Select' } do
+      validates :category_id
+      validates :quality_id
+      validates :delivery_fee_id
+      validates :prefecture_id
+      validates :days_to_ship_id
+    end
   end
 
   has_one :purchase_record
