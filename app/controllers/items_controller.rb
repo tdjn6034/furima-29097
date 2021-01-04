@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
-    @user = User.find_by(id: @item.user)
   end
 
   private
