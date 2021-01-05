@@ -38,7 +38,8 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    item.destroy
+    item.destroy if current_user == item.user
+
     redirect_to root_path
   end
 
