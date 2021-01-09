@@ -7,8 +7,4 @@ Rails.application.routes.draw do
     resources :purchase_records, only: [:index, :create]
   end
 
-  resources :users do
-    resources :purchase_records, only: [:index, :create]
-  end
-
 end
