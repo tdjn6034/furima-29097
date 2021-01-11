@@ -4,6 +4,7 @@ class PurchaserecordAddress
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: " Input correctly" }
+    validates :prefecture_id, numericality: { other_than: 1, message: 'Select' }
     validates :municipality
     validates :address
     validates :phone_number, numericality: { only_integer: true, message: "Input only number"}
