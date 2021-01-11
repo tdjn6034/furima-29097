@@ -1,6 +1,6 @@
 class PurchaserecordAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :hoge
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: " Input correctly" }
@@ -10,7 +10,8 @@ class PurchaserecordAddress
   end
 
   def save
-    Address.create(user: user_id, item: item_id, postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, address: address, building_name: building_name, phone_number: phone_number)
+    purchase_record = PurchaseRecord.create(user_id: user_id, item_id: item_id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, address: address, building_name: building_name, phone_number: phone_number, purchase_record_id: purchase_record.id )
   end
 
 end
