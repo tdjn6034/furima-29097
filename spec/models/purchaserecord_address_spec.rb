@@ -12,6 +12,7 @@ RSpec.describe PurchaserecordAddress, type: :model do
       end
 
       it 'building_nameがなくても購入できる' do
+        @purchaserecord_address.building_name = nil
         expect(@purchaserecord_address).to be_valid
       end
     end
@@ -33,6 +34,12 @@ RSpec.describe PurchaserecordAddress, type: :model do
         @purchaserecord_address.prefecture_id = 1
         @purchaserecord_address.valid?
         expect(@purchaserecord_address.errors.full_messages).to include('Prefecture Select')
+      end
+
+      it 'prefecture_idが空だと購入できない' do
+        @purchaserecord_address.prefecture_id = nil
+        @purchaserecord_address.valid?
+        expect(@purchaserecord_address.errors.full_messages).to include("Prefecture can't be blank")
       end
 
       it 'municipalityが空だと購入できない' do
@@ -63,6 +70,24 @@ RSpec.describe PurchaserecordAddress, type: :model do
         @purchaserecord_address.phone_number = '090-1234-56'
         @purchaserecord_address.valid?
         expect(@purchaserecord_address.errors.full_messages).to include('Phone number Input only number')
+      end
+
+      it 'phone_numberが全角文字の場合は購入できない' do
+        @purchaserecord_address.phone_number = '０９０１２３４５６７８'
+        @purchaserecord_address.valid?
+        expect(@purchaserecord_address.errors.full_messages).to include('Phone number Input only number')
+      end
+
+      it 'phone_numberに半角英字が混じっている場合は購入できない' do
+        @purchaserecord_address.phone_number = '090abcd5678'
+        @purchaserecord_address.valid?
+        expect(@purchaserecord_address.errors.full_messages).to include('Phone number Input only number')
+      end
+
+      it 'phone_numberが11桁以上では購入できない' do
+        @purchaserecord_address.phone_number = '0901234567890'
+        @purchaserecord_address.valid?
+        expect(@purchaserecord_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
 
       it 'user_idが空だと購入できない' do

@@ -2,14 +2,14 @@ class PurchaserecordAddress
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :token
 
-  validates :token, presence: true
-
   with_options presence: true do
+    validates :token, presence: true
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'Input correctly' }
     validates :prefecture_id, numericality: { other_than: 1, message: 'Select' }
     validates :municipality
     validates :address
-    validates :phone_number, numericality: { only_integer: true, message: 'Input only number' }
+    validates :phone_number, numericality: { only_integer: true, message: 'Input only number' },
+                             length: { maximum: 11 }
     validates :item_id
     validates :user_id
   end
