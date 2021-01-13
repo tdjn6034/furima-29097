@@ -1,8 +1,10 @@
 class PurchaseRecordsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @purchaserecord_address = PurchaserecordAddress.new
     @item = Item.find_by(id: params[:item_id])
+    redirect_to :root if current_user == @item.user || @item.purchase_record.present?
   end
 
   def create
