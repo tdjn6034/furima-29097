@@ -61,11 +61,6 @@ ActiveRecord::Schema.define(version: 2021_01_09_053221) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "purchase_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false
@@ -73,11 +68,6 @@ ActiveRecord::Schema.define(version: 2021_01_09_053221) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_purchase_records_on_item_id"
     t.index ["user_id"], name: "index_purchase_records_on_user_id"
-  end
-
-  create_table "quarities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
