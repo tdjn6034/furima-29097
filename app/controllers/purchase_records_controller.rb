@@ -3,12 +3,12 @@ class PurchaseRecordsController < ApplicationController
 
   def index
     @purchaserecord_address = PurchaserecordAddress.new
-    @item = Item.find_by(id: params[:item_id])
+    @item = Item.find(params[:item_id])
     redirect_to :root if current_user == @item.user || @item.purchase_record.present?
   end
 
   def create
-    @item = Item.find_by(id: params[:item_id])
+    @item = Item.find(params[:item_id])
     @purchaserecord_address = PurchaserecordAddress.new(purchaserecord_params)
     if @purchaserecord_address.valid?
       Payjp.api_key = ENV['PAYJP_SECRET_KEY']
