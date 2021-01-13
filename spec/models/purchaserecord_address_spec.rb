@@ -10,6 +10,10 @@ RSpec.describe PurchaserecordAddress, type: :model do
       it 'token、postal_code、prefecture_id、municipality、address、phone_numberが存在すれば購入できる' do
         expect(@purchaserecord_address).to be_valid
       end
+
+      it 'building_nameがなくても購入できる' do
+        expect(@purchaserecord_address).to be_valid
+      end
     end
 
     context '購入がうまくいかないとき' do
