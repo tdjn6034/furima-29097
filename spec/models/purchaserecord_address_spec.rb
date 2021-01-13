@@ -64,6 +64,18 @@ RSpec.describe PurchaserecordAddress, type: :model do
         @purchaserecord_address.valid?
         expect(@purchaserecord_address.errors.full_messages).to include('Phone number Input only number')
       end
+
+      it 'user_idが空だと購入できない' do
+        @purchaserecord_address.user_id = ''
+        @purchaserecord_address.valid?
+        expect(@purchaserecord_address.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空だと購入できない' do
+        @purchaserecord_address.item_id = ''
+        @purchaserecord_address.valid?
+        expect(@purchaserecord_address.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end
