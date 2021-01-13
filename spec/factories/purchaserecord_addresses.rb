@@ -5,7 +5,7 @@ FactoryBot.define do
     prefecture_id { 2 }
     municipality  { '札幌市' }
     address       { '中央区1-1-1' }
-    building_name { '' }
+    building_name { '札幌ビル101' }
     phone_number  { '09012345678' }
     user_id       { 1 }
     item_id       { 1 }
