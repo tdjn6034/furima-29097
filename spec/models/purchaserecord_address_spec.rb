@@ -16,13 +16,13 @@ RSpec.describe PurchaserecordAddress, type: :model do
       it 'tokenが空だと購入できない' do
         @purchaserecord_address.token = nil
         @purchaserecord_address.valid?
-        expect(@purchaserecord_address.errors.full_messages). to include("Token can't be blank")
+        expect(@purchaserecord_address.errors.full_messages).to include("Token can't be blank")
       end
 
       it 'postal_codeが空だと購入できない' do
         @purchaserecord_address.postal_code = nil
         @purchaserecord_address.valid?
-        expect(@purchaserecord_address.errors.full_messages). to include("Postal code can't be blank")
+        expect(@purchaserecord_address.errors.full_messages).to include("Postal code can't be blank")
       end
 
       it 'prefecture_idが１だと購入できない' do
@@ -34,23 +34,23 @@ RSpec.describe PurchaserecordAddress, type: :model do
       it 'municipalityが空だと購入できない' do
         @purchaserecord_address.municipality = nil
         @purchaserecord_address.valid?
-        expect(@purchaserecord_address.errors.full_messages). to include("Municipality can't be blank")
+        expect(@purchaserecord_address.errors.full_messages).to include("Municipality can't be blank")
       end
 
       it 'addressが空だと購入できない' do
         @purchaserecord_address.address = nil
         @purchaserecord_address.valid?
-        expect(@purchaserecord_address.errors.full_messages). to include("Address can't be blank")
+        expect(@purchaserecord_address.errors.full_messages).to include("Address can't be blank")
       end
 
       it 'phone_numberが空だと購入できない' do
         @purchaserecord_address.phone_number = nil
         @purchaserecord_address.valid?
-        expect(@purchaserecord_address.errors.full_messages). to include("Phone number can't be blank")
+        expect(@purchaserecord_address.errors.full_messages).to include("Phone number can't be blank")
       end
 
       it 'postal_codeにハイフンがないと購入できない' do
-        @purchaserecord_address.postal_code = 111111
+        @purchaserecord_address.postal_code = 111_111
         @purchaserecord_address.valid?
         expect(@purchaserecord_address.errors.full_messages).to include('Postal code Input correctly')
       end
@@ -58,7 +58,7 @@ RSpec.describe PurchaserecordAddress, type: :model do
       it 'phone_numberにハイフンが入っていると購入できない' do
         @purchaserecord_address.phone_number = '090-1234-56'
         @purchaserecord_address.valid?
-        expect(@purchaserecord_address.errors.full_messages).to include ('Phone number Input only number')
+        expect(@purchaserecord_address.errors.full_messages).to include('Phone number Input only number')
       end
     end
   end
