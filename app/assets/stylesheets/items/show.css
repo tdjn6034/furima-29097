@@ -155,6 +155,12 @@
   resize: none;
 }
 
+.comment_list {
+  width: 100%
+  height: 100px
+  padding: 10px
+}
+
 .comment-warn {
   padding: 10px;
   font-size: 14px;
