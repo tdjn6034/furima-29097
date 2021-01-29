@@ -155,10 +155,11 @@
   resize: none;
 }
 
-.comment_list {
-  width: 100%
-  height: 100px
-  padding: 10px
+#comment-list {
+  width: 40vw;
+  height: 100%;
+  padding: 10px;
+  background-color:white;
 }
 
 .comment-warn {

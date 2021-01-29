@@ -83,7 +83,7 @@
   <div class="comment-box">
       <% if user_signed_in? %>
         <%= form_with(model: [@item,@comment], local: true) do |form| %>
-          <%= form.text_area :text, placeholder: "気になることがあれば質問してみましょう", rows: "2" %>
+          <%= form.text_area :text, placeholder: "気になることがあれば質問してみましょう!!!", :size => "60×30" %>
           <p class="comment-warn">
             相手のことを考え丁寧なコメントを心がけましょう。
             <br>
