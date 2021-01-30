@@ -155,6 +155,13 @@
   resize: none;
 }
 
+#comment-list {
+  width: 40vw;
+  height: 100%;
+  padding: 10px;
+  background-color:white;
+}
+
 .comment-warn {
   padding: 10px;
   font-size: 14px;
